@@ -5,26 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kristin Weyell — Portfolio</title>
     <style>
+        /* Sanftes Scrollen zu den Abschnitten */
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
-            padding: 40px 20px;
+            padding: 120px 20px 60px 20px; /* Platz nach oben wegen der fixierten Navigation */
             background-color: #ffffff;
             color: #111111;
             display: flex;
             justify-content: center;
         }
+        
         .container {
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
         }
+        
+        /* Minimalistische, feste Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 30px 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #f5f5f5;
+            z-index: 1000;
+        }
+        
+        .nav-links {
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: #777777;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #111111;
+        }
+        
+        /* Header-Bereich */
+        header {
+            margin-bottom: 70px;
+        }
+        
         h1 {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 500;
             margin-bottom: 6px;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
+        
         .subtitle {
             font-size: 11px;
             font-weight: 500;
@@ -33,65 +83,126 @@
             margin-bottom: 45px;
             text-transform: uppercase;
         }
+        
         .quote {
             font-size: 15px;
             font-weight: 400;
             color: #555555;
-            margin-bottom: 60px;
             line-height: 1.6;
             max-width: 600px;
             letter-spacing: 0.2px;
         }
-        .gallery-item {
-            margin-bottom: 80px;
+        
+        /* Sektions-Stile */
+        section {
+            padding-top: 60px;
+            margin-bottom: 100px;
         }
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            margin-bottom: 20px;
-        }
-        .description {
-            font-size: 15px;
-            line-height: 1.6;
-            color: #444444;
-            max-width: 600px;
-        }
-        .meta {
-            font-size: 13px;
-            color: #888888;
-            margin-bottom: 8px;
-        }
-        .contact-section {
-            border-top: 1px solid #eaeaea;
-            padding-top: 40px;
-            margin-top: 40px;
-            margin-bottom: 60px;
-        }
-        .contact-title {
-            font-size: 11px;
+        
+        .section-title {
+            font-size: 12px;
             font-weight: 500;
             letter-spacing: 2px;
             color: #777777;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 10px;
         }
+        
+        /* Modernes Galerie-Raster (2 Spalten) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px 40px;
+        }
+        
+        .gallery-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+        }
+        
+        .meta {
+            font-size: 13px;
+            color: #888888;
+            margin-bottom: 6px;
+        }
+        
+        .description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #444444;
+            margin-bottom: 10px;
+        }
+        
+        .price {
+            font-size: 14px;
+            font-weight: 500;
+            color: #111111;
+            margin-top: auto; /* Schiebt den Preis nach unten, falls Texte unterschiedlich lang sind */
+        }
+        
+        /* Text-Inhalte (Über mich / Sichtbarkeit) */
+        .text-content {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #333333;
+            max-width: 700px;
+        }
+        
+        /* Listen-Stil für Ausstellungen */
+        .list-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .list-items li {
+            margin-bottom: 15px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .list-items .year {
+            font-weight: 500;
+            min-width: 50px;
+            color: #111111;
+        }
+        
+        /* Kontakt & Fußzeile */
+        .contact-section {
+            border-top: 1px solid #eaeaea;
+            padding-top: 40px;
+            margin-top: 60px;
+        }
+        
         .contact-line {
             display: flex;
             align-items: center;
             font-size: 14px;
             margin-bottom: 12px;
         }
+        
         .contact-line a {
             color: #111111;
             text-decoration: none;
             border-bottom: 1px solid #111111;
             margin-left: 10px;
         }
+        
         .contact-line a:hover {
             color: #777777;
             border-bottom-color: #777777;
         }
+        
         .icon {
             width: 16px;
             height: 16px;
@@ -99,46 +210,138 @@
             display: inline-block;
             flex-shrink: 0;
         }
+        
+        footer {
+            margin-top: 80px;
+            padding-top: 20px;
+            border-top: 1px solid #f5f5f5;
+            text-align: center;
+        }
+        
+        .atelier-link {
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: #777777;
+            text-decoration: none;
+            text-transform: uppercase;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .atelier-link:hover {
+            color: #111111;
+            border-bottom-color: #111111;
+        }
+        
+        /* Responsive Design für Smartphones */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 100px;
+            }
+            nav {
+                padding: 20px;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 20px;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr; /* Einspaltig auf Handys */
+                gap: 60px;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <nav>
+        <div class="nav-links">
+            <a href="#galerie">Galerie</a>
+            <a href="#sichtbarkeit">Sichtbarkeit</a>
+            <a href="#ueber-mich">Über mich</a>
+            <a href="#kontakt">Kontakt</a>
+        </div>
+    </nav>
+
     <div class="container">
-        <h1>Kristin Weyell</h1>
-        <div class="subtitle">Malerei  •  Zeichnung  •  Workshops</div>
         
-        <!-- Das Zitat im puristischen, geraden Look -->
-        <div class="quote">
-            „Leere ist kein Mangel, sondern lässt Raum für den Ursprung.“
-        </div>
-
-        <!-- Galerie-Element -->
-        <div class="gallery-item">
-            <img src="IMG_5814.JPG" alt="Stillleben von Kristin Weyell">
+        <header>
+            <h1>Kristin Weyell</h1>
+            <div class="subtitle">Malerei  •  Zeichnung  •  Workshops</div>
             
-            <div class="meta">Stillleben, 2026</div>
-            <div class="description">
-                In dieser Arbeit wird die klassische räumliche Tiefe bewusst aufgelöst. Vorder- und Hintergrund stehen als gleichwertige, rhythmische Flächen nebeneinander, wobei die markanten preußischblauen Linien und die mintgrüne Tischplatte das visuelle Gefüge strukturieren.
+            <div class="quote">
+                „Leere ist kein Mangel, sondern lässt Raum für den Ursprung.“
             </div>
-        </div>
+        </header>
 
-        <!-- Puristischer Kontaktbereich mit präzisen Grafiken -->
-        <div class="contact-section">
-            <div class="contact-title">Kontakt</div>
+        <section id="galerie">
+            <div class="section-title">Galerie</div>
+            <div class="gallery-grid">
+                
+                <div class="gallery-item">
+                    <img src="IMG_5814.JPG" alt="Stillleben von Kristin Weyell">
+                    <div class="meta">Stillleben, 2026</div>
+                    <div class="description">
+                        In dieser Arbeit wird die klassische räumliche Tiefe bewusst aufgelöst. Vorder- und Hintergrund stehen als gleichwertige, rhythmische Flächen nebeneinander.
+                    </div>
+                    <div class="price">750,— €</div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="platzhalter.jpg" alt="Werk von Kristin Weyell">
+                    <div class="meta">Titel des Werks, Jahr</div>
+                    <div class="description">
+                        Hier kannst du eine kurze Beschreibung des zweiten Bildes, der verwendeten Techniken (z.B. Polychromos Farbstifte) oder der Inspiration einfügen.
+                    </div>
+                    <div class="price">Preis auf Anfrage</div>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="sichtbarkeit">
+            <div class="section-title">Sichtbarkeit & Ausstellungen</div>
+            <div class="text-content">
+                <ul class="list-items">
+                    <li>
+                        <span class="year">2026</span>
+                        <span>[Name der Ausstellung / Galerie / Ort]</span>
+                    </li>
+                    <li>
+                        <span class="year">2025</span>
+                        <span>[Frühere Ausstellung oder Kunstprojekt, Ort]</span>
+                    </li>
+                    </ul>
+            </div>
+        </section>
+
+        <section id="ueber-mich">
+            <div class="section-title">Über mich</div>
+            <div class="text-content">
+                <p>
+                    Hier ist Platz für deine Vita, deinen künstlerischen Ansatz und deine Philosophie. Du kannst beschreiben, was dich antreibt, wie du mit Flächen und Zwischenräumen arbeitest und wie du deine Techniken in deinen Workshops weitergibst.
+                </p>
+            </div>
+        </section>
+
+        <section id="kontakt" class="contact-section">
+            <div class="section-title">Kontakt</div>
             
             <div class="contact-line">
-                <!-- Moderner Briefumschlag -->
                 <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 <a href="mailto:Kristin_weyell@yahoo.de">Kristin_weyell@yahoo.de</a>
             </div>
             
             <div class="contact-line">
-                <!-- Exaktes Instagram-Logo -->
                 <svg class="icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                 <a href="https://instagram.com/Kristin.weyell" target="_blank" rel="noopener">@Kristin.weyell</a>
             </div>
-            
-        </div>
+        </section>
+
+        <footer>
+            <a class="atelier-link" href="https://www.kuxatelier.de" target="_blank" rel="noopener">Besuche das KuXatelier</a>
+        </footer>
+
     </div>
 
 </body>
